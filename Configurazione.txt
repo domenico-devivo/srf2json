@@ -1,0 +1,92 @@
+/*** Scaricare Eclipse ***\
+
+https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2024-12/R/eclipse-modeling-2024-12-R-win32-x86_64.zip&mirror_id=1045
+
+/*** Installare Maven ***\
+eclipse↓
+      Help↓
+	Eclipse MarketPlace...↓
+			ed installare:  tag:nature_org.eclipse.m2e.core.maven2Nature
+
+/*** Importare il progetto srf2json.zip ***\
+eclipse↓
+      File↓
+	Import↓
+	     Existing Projects into Workspace↓
+					Select archive file: e selezionare backup_srf2json.zip
+Una volta importato:
+     sul progetto srf2json --- > Tasto destro --- > Maven --- > Update Project...
+
+
+/*** Installare xtext ( da cui dipende antlr ) ***\ (n.b. ci vuole un po' di tempo...)
+eclipse↓
+      Help↓
+	Install New Software...↓
+		            Work with: http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/
+
+/*** Installare antlr ***\ (n.b. ci vuole un po' di tempo...)
+eclipse↓
+      Help↓
+	Install New Software...↓
+		            Work with: https://raw.githubusercontent.com/antlr4ide/antlr4ide-eclipse-release/master/
+
+/*** Download antlr v4.11.1 ***\
+https://mvnrepository.com/artifact/org.antlr/antlr4/4.11.1 ↓
+							Files↓
+							    jar(2.5 MB) ---> antlr4-4.11.1.jar
+								
+/*** Configurare antlr-4.11.1 ***\
+eclipse↓
+      Windows↓
+          Preferences↓
+		ANTLR 4↓
+		     Tool↓
+			ANTRL Tool↓
+				 Add↓
+				   Aggiungere antlr4-4.11.1.jar scaricato nel punto precedente ↓
+				                                                Selezionare 4.11.1 ( e deselezionare la 4.4 ) | antrl-4.11.1-complete.jar 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Prima di compilare accertarsi di aver modificato la calsse IGenericIDSortable.java che si trova nel:
+package eu.fbk.srf2json.dataclasses.commons;
+
+Decommentare le righe:
+[29] if (globalMinimumID == null || minimumIDOfElement.compareTo(globalMinimumID) < 0) {
+[41] .sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey()))
+
+ed eliminare le righe:
+[28] if (globalMinimumID == null || T.compareTwoIDs(minimumIDOfElement, globalMinimumID) < 0) {
+[40] .sorted((e1, e2) -> T.compareTwoIDs(e1.getKey(), e2.getKey()))
+
+
+
+************** Ricavare le Classi sorgenti ************** 
+I file .g4 sono parsati per ottenere delle classi che vengono usate per la generazione del dalle srf al json e si trovano nel percorso:
+src↓
+   main↓
+	antlr4↓
+	      eu↓
+		fbk↓
+		   srf2json↓
+			parsing↓
+			 	SRF_clocks.g4
+				SRF_definitions.g4
+				Srf_dictionary.g4
+				SRF.g4
+
+Si autocompilano andando a spuntare dal Project↓  		 ,ogni volta che si salva una modifica in uno si quei file .g4
+					   "Build automatically"			
+
+
+************** Compilare il progetto ************** 
+srf2json↓
+	src/main/java↓
+		    eu.fbk.srf2json↓
+		                 Main.java  --> Tasto destro ---> Run us --> Java Application
+
+
+
+
+
+
