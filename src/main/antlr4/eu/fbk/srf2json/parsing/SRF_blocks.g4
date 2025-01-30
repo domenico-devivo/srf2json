@@ -448,7 +448,7 @@ assegna :
 	ASSEGNA WS ALLA WS VARIABILE WS nome_variabile WS IL_VALORE WS di_valore								|
 
 	(ATTIVA|DISATTIVA) WS (IL WS)? TIMER WS nome_timer													    |
-	(INCREMENTA|DECREMENTA|AZZERRA) WS (IL WS)? CONTATORE WS nome_contatore									|
+	(INCREMENTA|DECREMENTA|AZZERA) WS (IL WS)? CONTATORE WS nome_contatore									|
 	
 	ASSEGNA WS a_nome_variabile WS (DEL WS CAMPO WS nome_campo WS)? di_unione_liste WS IL_VALORE WS (di_valore_in_iterazione | di_valore_da_lista_con_alternativa)
 	(WS? COMMA WS? QUANDO WS condizione_filtro_iterazione (WS (E|O) WS condizione_filtro_iterazione)*)?		|
@@ -456,7 +456,7 @@ assegna :
 	(ATTIVA|DISATTIVA) WS nome_timer WS (DEL WS CAMPO WS nome_campo WS)? di_unione_liste
 	(WS? COMMA WS? QUANDO WS condizione_filtro_iterazione (WS (E|O) WS condizione_filtro_iterazione)*)?		|
 	
-	(INCREMENTA|DECREMENTA|AZZERRA) WS nome_contatore WS (DEL WS CAMPO WS nome_campo WS)? di_unione_liste
+	(INCREMENTA|DECREMENTA|AZZERA) WS nome_contatore WS (DEL WS CAMPO WS nome_campo WS)? di_unione_liste
 	(WS? COMMA WS? QUANDO WS condizione_filtro_iterazione (WS (E|O) WS condizione_filtro_iterazione)*)?     |
 
 	APPLICA WS GLI WS EFFETTI WS DELLA WS PERMANENZA (WS DELLO WS STATO WS nome_stato)?
@@ -777,7 +777,7 @@ INCREMENTA : 'incrementa' ;
 
 DECREMENTA : 'decrementa' ;
 
-AZZERRA : 'azzerra' ;
+AZZERA : 'azzera' ;
 
 
 
