@@ -5,15 +5,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import eu.fbk.srf2json.dataclasses.commons.IGenericIDSortable;
 import eu.fbk.srf2json.dataclasses.commons.NamedDC;
 
-@JsonPropertyOrder({ "globalValue", "localValue", "literalValue" })
+@JsonPropertyOrder({ "tag", "globalValue", "localValue", "literalValue" })
 public class EnumLiteralDC implements IGenericIDSortable<Integer>, NamedDC {
+	private String tag;
 	private Integer globalValue;
 	private Integer localValue;
 	protected String literalValue;
 	
 	public EnumLiteralDC() {
 		super();
-
+		this.tag = new String ("Literal");
 		this.globalValue = null;
 		this.localValue = null;
 		this.literalValue = null;
@@ -44,7 +45,8 @@ public class EnumLiteralDC implements IGenericIDSortable<Integer>, NamedDC {
 	
 	@Override
 	public String toString() {
-		return this.literalValue + " (" + (localValue != null ? localValue.toString() : "null") + ", " + (globalValue != null ? globalValue.toString() : "null") + ")";
+		//String a = new String(this.literalValue + " (" + this.tag + ", " + (localValue != null ? localValue.toString() : "null") + ", " + (globalValue != null ? globalValue.toString() : "null") + ")");
+		return this.literalValue + " (" + this.tag + ", " + (localValue != null ? localValue.toString() : "null") + ", " + (globalValue != null ? globalValue.toString() : "null") + ")";
 	}
 
 	@Override
