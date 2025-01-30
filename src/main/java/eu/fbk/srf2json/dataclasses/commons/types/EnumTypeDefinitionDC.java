@@ -26,7 +26,7 @@ public class EnumTypeDefinitionDC extends NamedTypeDefinitionDC implements IName
 		
 		this.isOrdered = null;
 		
-		this.tag = "Literal";
+		this.tag = "Enumeration";
 		this.literals = new ArrayList<>();
 		this.parentClass = null;
 	}
